@@ -22,7 +22,7 @@ export default class Dribbble extends Component {
             return <Row>{ result.body.map((shot)=>{
               return (<div>
                   <Col s={3} m={3}>
-                    <Card header={<CardTitle reveal image={shot.images.hidpi} waves='light'/>}
+                    <Card header={<CardTitle reveal image={shot.images.hidpi ? shot.images.hidpi: shot.images.normal} waves='light'/>}
                     title={shot.title}
                     reveal={<p>shot.description</p>}>
                     <p>
