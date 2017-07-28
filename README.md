@@ -4,7 +4,7 @@
 
 ## To do ##
 
-npm start or yarn start
+~~npm start or yarn start~~
 
 
 ~~Git~~
