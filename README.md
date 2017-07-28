@@ -11,7 +11,7 @@ npm start or yarn start
 ~~React~~
 Sass ou Less
 ~~ECMAScript 6~~
-Flexbox
+~~Flexbox~~
 Testes unitários
 ~~Layout responsivo~~
 ~~npm~~
