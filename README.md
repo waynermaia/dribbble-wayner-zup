@@ -32,3 +32,11 @@ Testes unitários
 
 
 ~~webpack~~
+
+### PLUS ###
+
+Firebase Auth
+
+~~Firebase Hosting and Deploy~~ (https://dribbble-wayner-zup.firebaseapp.com/)
+
+Firebase Real Time Database
