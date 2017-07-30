@@ -30,13 +30,13 @@ wait or open http://localhost:3000/
 
 - [x] React
 
-- [] Sass ou Less
+- [ ] Sass ou Less
 
 - [x] ECMAScript 6
 
 - [x] Flexbox
 
-- [] Testes unitários
+- [ ] Testes unitários
 
 - [x] Layout responsivo
 
@@ -47,8 +47,8 @@ wait or open http://localhost:3000/
 
 ## PLUS
 
-- [] Firebase Auth
+- [ ] Firebase Auth
 
 - [x] Firebase Hosting and Deploy
 
-- [] Firebase Real Time Database
+- [ ] Firebase Real Time Database
