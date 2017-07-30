@@ -11,8 +11,6 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h5>Welcome to my Dribbble Client</h5>
         </div>
-        <p className="App-intro">
-        </p>
           <Dribbble />
       </div>
     );
