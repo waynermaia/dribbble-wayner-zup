@@ -8,14 +8,17 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
+import Divider from 'material-ui/Divider';
 import { CircularProgress } from 'material-ui/Progress';
 
-
-import renderHTML from 'react-render-html';
+// import renderHTML from 'react-render-html';
 
 const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
 
-class GuttersGrid extends Component {
+const Teste = () =>(<p>Teste</p>)
+
+class ListOfShots extends Component {
+  
   state = {
     gutter: '24',
   };
@@ -25,13 +28,13 @@ class GuttersGrid extends Component {
       [key]: value,
     });
   };
-  render(){
 
-  const classes = this.props.classes;
-  const { gutter } = this.state;
+  render(){
+    
+    const classes = this.props.classes;
+    const { gutter } = this.state;
 
     return (
-      <div>
           <Request
           url={'https://api.dribbble.com/v1/shots?&access_token=' + access_token}
           method='get'
@@ -41,60 +44,73 @@ class GuttersGrid extends Component {
           {
             ({error, result, loading}) => {
               if (loading) {
-                return <CircularProgress color="accent" className={classes.progress} size={50} />;
-              } else {
+                return (
+                <div className={classes.parentProgress}>
+                  <CircularProgress color="accent" className={classes.progress} size={50} />
+                </div>
+                );
+              } else if(result) {
                 return <div>{
 
               <Grid item xs={12}>
-                <Grid container className={classes.demo} justify="center" gutter={Number(gutter)}>
+                <Grid container style={{}} className={classes.demo} justify="center" gutter={Number(gutter)}>
                   {result.body.map(shot =>
+
                     <Grid key={shot.id} item>
-                    <Card className={classes.card}>
-                      <CardHeader
-                        avatar={
-                          <Avatar aria-label="Recipe" className={classes.avatar}>
-                            <img src={shot.user.avatar_url} className={classes.avatarPic} alt={shot.user.username}/>
-                          </Avatar>
-                        }
-                        title={shot.user.name}
-                        subheader={shot.created_at}
-                      />
-                      <CardMedia>
-                        <img width="100%" className={classes.backgroundCard} src={shot.images.hidpi ? shot.images.hidpi : shot.images.normal} alt="Contemplative Reptile" />
-                      </CardMedia>
 
-                      <CardContent>
-                        <Typography className={classes.cardTitle} type="headline" component="h1">
-                          {shot.title}
-                        </Typography>
-                      </CardContent>
+                      <Card className={classes.card}>
 
-                      <CardActions>
-                        <Button dense color="primary">
-                        Ver Mais
-                        </Button>
-                      </CardActions>
-                    </Card>
+                        <CardHeader
+                          avatar={
+                            <Avatar aria-label="Recipe" className={classes.avatar}>
+                              <img src={shot.user.avatar_url} className={classes.avatarPic} alt={shot.user.username}/>
+                            </Avatar>
+                          }
+                          title={shot.user.name}
+                          subheader={shot.created_at}
+                        />
+
+                        <CardMedia>
+                          <img width="100%" className={classes.backgroundCard} src={shot.images.hidpi ? shot.images.hidpi : shot.images.normal} alt="Contemplative Reptile" />
+                        </CardMedia>
+
+                        <CardContent>
+                          <Typography className={classes.cardTitle} type="headline" component="h1">
+                            {shot.title}
+                          </Typography>
+                        </CardContent>
+
+                        <Divider light />
+
+                        <CardActions>
+                          <Button dense color="primary">
+                          Ver Mais
+                          </Button>
+                        </CardActions>
+
+                      </Card>
+
                      </Grid>,
                     )}
                   </Grid>
                 </Grid>            
               }
               </div>;
+            }else{
+              return (<p>Ocorreu algum Erro.</p>);
             }
           }
         }
         </Request>
-      </div>
     );
   }
 }
 
-GuttersGrid.propTypes = {
+ListOfShots.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const styleSheet = createStyleSheet('GuttersGrid', theme => ({
+const styleSheet = createStyleSheet('ListOfShots', theme => ({
   card: {
     maxWidth: 345,
     cursor: 'pointer',
@@ -114,7 +130,9 @@ const styleSheet = createStyleSheet('GuttersGrid', theme => ({
     },
   },
   demo: {
-    height: 240,
+    backgroundColor:'#f4f4f4',
+    width:'initial',
+    margin:'initial'
   },
   root: {
     flexGrow: 1,
@@ -122,9 +140,13 @@ const styleSheet = createStyleSheet('GuttersGrid', theme => ({
   control: {
     padding: theme.spacing.unit * 2,
   },
+  parentProgress: {
+    display: 'flex',
+    height: 100 
+  },
   progress: {
-    margin: `0 ${theme.spacing.unit * 2}px`,
+    margin: 'auto',
   },
 }));
 
-export default withStyles(styleSheet)(GuttersGrid);
+export default withStyles(styleSheet)(ListOfShots);
