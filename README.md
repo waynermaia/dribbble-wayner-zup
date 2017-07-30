@@ -4,25 +4,28 @@
 
 ## Run
 
-For run the Test:
+For run:
 ```shell
 git clone https://github.com/waynermaia/dribbble-wayner-zup.git
 
-cd react-lazy-load
+cd dribbble-wayner-zup
 npm install
 
-cd ./examples/basic
-npm install
-npm start
+npm start or yarn start
 
-open http://localhost:3000/
+wait or open http://localhost:3000/
 
-or click [here](https://dribbble-wayner-zup.firebaseapp.com/)
+```
+
+## Demo
+
+```shell
+[Link](https://dribbble-wayner-zup.firebaseapp.com/)
 ```
 
 
 ```shell
-## To do ##
+## To Do
 
 ~~npm start or yarn start~~
 
