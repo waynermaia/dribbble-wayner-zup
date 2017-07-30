@@ -1,6 +1,6 @@
 # dribbble-wayner-zup #
 
-![picture alt](https://media.giphy.com/media/XNh4XDQfuQwQ8/giphy.gif "04/08/2017")
+![picture alt](https://i.giphy.com/media/XNh4XDQfuQwQ8/giphy.webp "04/08/2017")
 
 ## Run
 
