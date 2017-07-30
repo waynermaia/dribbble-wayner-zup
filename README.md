@@ -1,68 +1,54 @@
 # dribbble-wayner-zup #
 
-![picture alt](https://i.giphy.com/media/XNh4XDQfuQwQ8/giphy.webp "04/08/2017")
+![picture alt](https://i.giphy.com/XNh4XDQfuQwQ8.gif "04/08/2017")
 
-## Run
+## For run
+```
+git clone __https://github.com/waynermaia/dribbble-wayner-zup.git__
 
-For run:
-git clone https://github.com/waynermaia/dribbble-wayner-zup.git
+cd __dribbble-wayner-zup__
 
-cd dribbble-wayner-zup
-npm install
+npm __install__
 
-npm start or yarn start
+__npm start__ or __yarn start__
 
-wait or open http://localhost:3000/
-
-
+wait or __open http://localhost:3000/__
+```
 ## Demo
 
 [Link](https://dribbble-wayner-zup.firebaseapp.com/)
 
-
 ## To Do
 
-~~npm start or yarn start~~
+- [x] npm start or yarn start
 
+- [x] Chrome
 
-~~Chrome~~
+- [x] Firefox
 
+- [x] Git
 
-~~Firefox~~
+- [x] React
 
+- [] Sass ou Less
 
-~~Git~~
+- [x] ECMAScript 6
 
+- [x] Flexbox
 
-~~React~~
+- [] Testes unitários
 
+- [x] Layout responsivo
 
-Sass ou Less
+- [x] npm
 
-
-~~ECMAScript 6~~
-
-
-~~Flexbox~~
-
-
-Testes unitários
-
-
-~~Layout responsivo~~
-
-
-~~npm~~
-
-
-~~webpack~~
-
+- [x] webpack
 
 
 ## PLUS
 
-Firebase Auth
+- [] Firebase Auth
 
-~~Firebase Hosting and Deploy~~
+- [x] Firebase Hosting and Deploy
 
-Firebase Real Time Database
+- [] Firebase Real Time Database
