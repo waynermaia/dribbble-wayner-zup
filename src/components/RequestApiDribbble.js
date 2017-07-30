@@ -10,6 +10,7 @@ import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
 import { CircularProgress } from 'material-ui/Progress';
+import LazyLoad from 'react-lazy-load';
 
 // import renderHTML from 'react-render-html';
 
@@ -21,12 +22,6 @@ class ListOfShots extends Component {
   
   state = {
     gutter: '24',
-  };
-
-  handleChange = key => (event, value) => {
-    this.setState({
-      [key]: value,
-    });
   };
 
   render(){
@@ -57,13 +52,11 @@ class ListOfShots extends Component {
                   {result.body.map(shot =>
 
                     <Grid key={shot.id} item>
-
                       <Card className={classes.card}>
-
                         <CardHeader
                           avatar={
                             <Avatar aria-label="Recipe" className={classes.avatar}>
-                              <img src={shot.user.avatar_url} className={classes.avatarPic} alt={shot.user.username}/>
+                                <img src={shot.user.avatar_url} className={classes.avatarPic} alt={shot.user.username}/>
                             </Avatar>
                           }
                           title={shot.user.name}
@@ -71,7 +64,9 @@ class ListOfShots extends Component {
                         />
 
                         <CardMedia>
-                          <img width="100%" className={classes.backgroundCard} src={shot.images.hidpi ? shot.images.hidpi : shot.images.normal} alt="Contemplative Reptile" />
+                          <LazyLoad throttle={0}>
+                            <img className={classes.backgroundCard} src={shot.images.normal} alt="Contemplative Reptile" />
+                          </LazyLoad>
                         </CardMedia>
 
                         <CardContent>
@@ -87,10 +82,8 @@ class ListOfShots extends Component {
                           Ver Mais
                           </Button>
                         </CardActions>
-
                       </Card>
-
-                     </Grid>,
+                    </Grid>,
                     )}
                   </Grid>
                 </Grid>            
@@ -123,6 +116,7 @@ const styleSheet = createStyleSheet('ListOfShots', theme => ({
     borderRadius: 20,
   },
   backgroundCard: {
+    width: '100%',
     transition: '.4s opacity',
     '&:hover': {
       opacity: '.4',
