@@ -12,6 +12,12 @@ import Divider from 'material-ui/Divider';
 import { CircularProgress } from 'material-ui/Progress';
 import LazyLoad from 'react-lazy-load';
 
+import IconButton from 'material-ui/IconButton';
+import red from 'material-ui/colors/red';
+import Likes from 'material-ui-icons/Favorite';
+import Views from 'material-ui-icons/Visibility';
+import Comment from 'material-ui-icons/Comment';
+
 // import renderHTML from 'react-render-html';
 
 const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
@@ -64,7 +70,10 @@ class ListOfShots extends Component {
                         />
 
                         <CardMedia>
-                          <LazyLoad throttle={0}>
+                          <LazyLoad 
+                          throttle={0}
+                          onContentVisible={() => console.log('look ma I have been lazyloaded!')}
+                          >
                             <img className={classes.backgroundCard} src={shot.images.normal} alt="Contemplative Reptile" />
                           </LazyLoad>
                         </CardMedia>
@@ -77,11 +86,24 @@ class ListOfShots extends Component {
 
                         <Divider light />
 
-                        <CardActions>
-                          <Button dense color="primary">
-                          Ver Mais
-                          </Button>
+                        <CardActions disableActionSpacing>
+                            <IconButton aria-label="Likes">
+                              <Likes />
+                            </IconButton>
+                            {shot.likes_count}
+                            
+                            <IconButton aria-label="Views">
+                              <Views />
+                            </IconButton>
+                            {shot.views_count}
+
+                            <IconButton aria-label="Views">
+                              <Comment />
+                            </IconButton>
+                            {shot.comments_count}
+                          <div className={classes.flexGrow} />
                         </CardActions>
+
                       </Card>
                     </Grid>,
                     )}
