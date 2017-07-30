@@ -1,18 +1,18 @@
 # dribbble-wayner-zup #
 
-![picture alt](https://i.giphy.com/XNh4XDQfuQwQ8.gif "04/08/2017")
+![picture alt](https://cdn.dribbble.com/users/1041961/screenshots/2485936/alchemy-dribbble-icon2.gif "Dribbble Gif")
 
 ## For run
 ```
-git clone __https://github.com/waynermaia/dribbble-wayner-zup.git__
+git clone https://github.com/waynermaia/dribbble-wayner-zup.git
 
-cd __dribbble-wayner-zup__
+cd dribbble-wayner-zup
 
-npm __install__
+npm install
 
-__npm start__ or __yarn start__
+npm start or yarn start
 
-wait or __open http://localhost:3000/__
+wait or open http://localhost:3000/
 ```
 ## Demo
 
