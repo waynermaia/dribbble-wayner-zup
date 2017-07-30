@@ -16,6 +16,8 @@ import Likes from 'material-ui-icons/Favorite';
 import Views from 'material-ui-icons/Visibility';
 import Comment from 'material-ui-icons/Comment';
 
+import DateFormat from 'dateformat';
+
 // import renderHTML from 'react-render-html';
 
 const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
@@ -64,7 +66,7 @@ class ListOfShots extends Component {
                             </Avatar>
                           }
                           title={shot.user.name}
-                          subheader={shot.created_at}
+                          subheader={DateFormat(shot.created_at,"fullDate")}
                         />
 
                         <CardMedia>
