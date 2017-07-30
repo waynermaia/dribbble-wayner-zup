@@ -4,7 +4,6 @@ import Request from 'react-http-request';
 import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, {CardHeader, CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import Grid from 'material-ui/Grid';
@@ -13,7 +12,6 @@ import { CircularProgress } from 'material-ui/Progress';
 import LazyLoad from 'react-lazy-load';
 
 import IconButton from 'material-ui/IconButton';
-import red from 'material-ui/colors/red';
 import Likes from 'material-ui-icons/Favorite';
 import Views from 'material-ui-icons/Visibility';
 import Comment from 'material-ui-icons/Comment';
