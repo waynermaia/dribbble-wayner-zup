@@ -20,6 +20,8 @@ import DateFormat from 'dateformat';
 
 // import renderHTML from 'react-render-html';
 
+import GifPlayer from 'react-gif-player';
+
 const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
 
 const Teste = () =>(<p>Teste</p>)
@@ -37,7 +39,7 @@ class ListOfShots extends Component {
 
     return (
           <Request
-          url={'https://api.dribbble.com/v1/shots?&access_token=' + access_token}
+          url={'https://api.dribbble.com/v1/shots?&page=1&per_page=100&access_token=' + access_token}
           method='get'
           accept='application/json'
           verbose={true}
@@ -56,7 +58,6 @@ class ListOfShots extends Component {
               <Grid item xs={12}>
                 <Grid container style={{}} className={classes.demo} justify="center" gutter={Number(gutter)}>
                   {result.body.map(shot =>
-
                     <Grid key={shot.id} item>
                       <Card className={classes.card}>
                         <CardHeader
@@ -74,7 +75,7 @@ class ListOfShots extends Component {
                           throttle={0}
                           onContentVisible={() => console.log('look ma I have been lazyloaded!')}
                           >
-                            <img className={classes.backgroundCard} src={shot.images.normal} alt="Contemplative Reptile" />
+                            <GifPlayer className={classes.backgroundCard} gif={shot.images.hidpi} still={shot.images.normal} alt={`shot${shot.id}`} />
                           </LazyLoad>
                         </CardMedia>
 
@@ -108,8 +109,9 @@ class ListOfShots extends Component {
                     </Grid>,
                     )}
                   </Grid>
-                </Grid>            
+                </Grid>          
               }
+              <p>Ver Mais</p>
               </div>;
             }else{
               return (<p>Ocorreu algum Erro.</p>);
@@ -140,10 +142,10 @@ const styleSheet = createStyleSheet('ListOfShots', theme => ({
   backgroundCard: {
     width: '100%',
     transition: '.4s opacity',
-    '&:hover': {
-      opacity: '.4',
-      transition: '.4s opacity',
-    },
+    // '&:hover': {
+    //   opacity: '.4',
+    //   transition: '.4s opacity',
+    // },
   },
   demo: {
     backgroundColor:'#f4f4f4',
