@@ -27,3 +27,17 @@
 .gif_player .play_button:hover {
   opacity: 1 !important;
 }
+
+.ArrowUpward {
+  background:#222222;
+  border-radius:100px;
+  padding:20px;
+  color:white;
+  opacity: .7;
+  transition: .8s all !important;
+}
+
+.ArrowUpward:hover {
+  opacity: 1;
+  transition: .8s all;
+}
