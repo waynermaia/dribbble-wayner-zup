@@ -4,6 +4,8 @@ import Dribbble from './components/RequestApiDribbble';
 import logo from './dribbbleLogo.svg';
 import './App.css';
 import './PlayerGif.css';
+import ScrollToTop from 'react-scroll-up';
+import ArrowUpward from 'material-ui-icons/ArrowUpward';
 
 class App extends Component {
   render() {
@@ -15,6 +17,9 @@ class App extends Component {
           <h5>Web application for Front end Developer test</h5>
         </div>
           <Dribbble />
+          <ScrollToTop showUnder={160}>
+            <ArrowUpward className="ArrowUpward" />
+          </ScrollToTop>
       </div>
     );
   }
