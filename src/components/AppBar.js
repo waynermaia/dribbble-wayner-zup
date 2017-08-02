@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import MenuIcon from 'material-ui-icons/Menu';
-import Button from 'material-ui/Button';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
+import GitHub from '../GitHub.svg';
 
 export default class NavBar extends Component {
 	render(){
@@ -16,7 +16,11 @@ export default class NavBar extends Component {
 		          </IconButton>
 		          <Typography type="title" color="inherit" style={{flex:1}}>
 		          </Typography>
-		          <Button color="contrast" className="right">Login</Button>
+		          <IconButton color="contrast" className="right">
+					<a href="https://github.com/waynermaia/dribbble-wayner-zup" target="blank">
+						<img src={GitHub} style={{width:30}} title="GitHub" alt="GitHub" />
+					</a>
+		          </IconButton>
 		        </Toolbar>
 		    </AppBar>
 		);

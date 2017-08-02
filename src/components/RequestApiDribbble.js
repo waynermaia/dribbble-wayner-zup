@@ -109,7 +109,6 @@ class ListOfShots extends Component {
                     )}
                   </Grid>
                 }
-                <p>Ver Mais</p>
               </Grid>
             }else{
               return (<p>Ocorreu algum Erro.</p>);
