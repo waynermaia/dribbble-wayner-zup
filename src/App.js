@@ -16,10 +16,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h5>Web application for Front end Developer test</h5>
         </div>
+        <div className="App-content">
           <Dribbble />
           <ScrollToTop showUnder={160}>
             <ArrowUpward className="ArrowUpward" />
           </ScrollToTop>
+        </div>
       </div>
     );
   }
