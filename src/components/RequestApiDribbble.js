@@ -29,7 +29,7 @@ const Teste = () =>(<p>Teste</p>)
 class ListOfShots extends Component {
   
   state = {
-    gutter: '24',
+    gutter: 24,
   };
 
   render(){
@@ -56,7 +56,7 @@ class ListOfShots extends Component {
                 return <div>{
 
               <Grid item xs={12}>
-                <Grid container style={{}} className={classes.demo} justify="center" gutter={Number(gutter)}>
+                <Grid container style={{}} className={classes.demo} justify="center" gutter={gutter}>
                   {result.body.map(shot =>
                     <Grid key={shot.id} item>
                       <Card className={classes.card}>
