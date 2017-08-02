@@ -39,7 +39,7 @@ class ListOfShots extends Component {
 
     return (
           <Request
-          url={'https://api.dribbble.com/v1/shots?&page=1&per_page=100&access_token=' + access_token}
+          url={'https://api.dribbble.com/v1/shots?&list=attachments&page=1&per_page=30&access_token=' + access_token}
           method='get'
           accept='application/json'
           verbose={true}
@@ -75,7 +75,8 @@ class ListOfShots extends Component {
                           throttle={0}
                           onContentVisible={() => console.log('look ma I have been lazyloaded!')}
                           >
-                            <GifPlayer className={classes.backgroundCard} gif={shot.images.hidpi} still={shot.images.normal} alt={`shot${shot.id}`} />
+                          {shot.animated ? <GifPlayer className={classes.backgroundCard} gif={shot.images.hidpi} still={shot.images.normal} alt={`shot${shot.id}`} />
+                          : <img className={classes.backgroundCard} src={shot.images.normal} alt={`shot${shot.id}`} />}
                           </LazyLoad>
                         </CardMedia>
 
