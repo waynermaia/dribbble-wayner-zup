@@ -53,9 +53,7 @@ class ListOfShots extends Component {
                 </div>
                 );
               } else if(result) {
-                return <div>{
-
-              <Grid item xs={12}>
+                return <Grid item xs> {
                 <Grid container style={{}} className={classes.demo} justify="center" gutter={gutter}>
                   {result.body.map(shot =>
                     <Grid key={shot.id} item>
@@ -110,10 +108,9 @@ class ListOfShots extends Component {
                     </Grid>,
                     )}
                   </Grid>
-                </Grid>          
-              }
-              <p>Ver Mais</p>
-              </div>;
+                }
+                <p>Ver Mais</p>
+              </Grid>
             }else{
               return (<p>Ocorreu algum Erro.</p>);
             }
@@ -130,7 +127,7 @@ ListOfShots.propTypes = {
 
 const styleSheet = createStyleSheet('ListOfShots', theme => ({
   card: {
-    maxWidth: 345,
+    maxWidth: 290,
     cursor: 'pointer',
   },
   cardTitle: {
