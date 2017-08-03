@@ -21,9 +21,6 @@ const styleSheet = createStyleSheet('ListOfShots', theme => ({
     maxWidth: 290,
     cursor: 'pointer',
   },
-  cardTitle: {
-    fontSize: 18,
-  },
   avatarPic: {
     width: 40,
     borderRadius: 20,
@@ -31,29 +28,7 @@ const styleSheet = createStyleSheet('ListOfShots', theme => ({
   backgroundCard: {
     width: '100%',
     transition: '.4s opacity',
-    // '&:hover': {
-    //   opacity: '.4',
-    //   transition: '.4s opacity',
-    // },
-  },
-  demo: {
-    backgroundColor:'#f4f4f4',
-    width:'initial',
-    margin:'initial'
-  },
-  root: {
-    flexGrow: 1,
-  },
-  control: {
-    padding: theme.spacing.unit * 2,
-  },
-  parentProgress: {
-    display: 'flex',
-    height: 100 
-  },
-  progress: {
-    margin: 'auto',
-  },
+  }
 }));
 
 function CardShot(props) {

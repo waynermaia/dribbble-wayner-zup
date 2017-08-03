@@ -4,15 +4,12 @@ import axios from 'axios';
 import CardShot from './CardShot';
 
 import { withStyles, createStyleSheet } from 'material-ui/styles';
+import { LinearProgress } from 'material-ui/Progress';
 
 const url = "https://api.dribbble.com/v1/shots?";
 const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
 
-const filter = () => {
-    return <p>teste</p>
-}
-
-export default class ShotDribbble extends Component {
+export default class ServiceDribbble extends Component {
   constructor(props) {
 
     super(props)
@@ -30,12 +27,17 @@ export default class ShotDribbble extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount(props) {
+
+    const { list, timeframe, sort } = this.props;
     const { refApi, per_page } = this.state;
-    axios.get(`${url}&list=${refApi.list}&timeframe=${refApi.timeframe}&sort=${refApi.sort}&per_page=${per_page}&access_token=${access_token}`)    .then(result => {
+
+    axios.get(`${url}&list=${list}&timeframe=${timeframe}&sort=${sort}&per_page=${per_page}&access_token=${access_token}`)
+    .then(result => {
       this.setState({
-        shots: result.data
-      })
+        shots:   result.data,
+        loading: false,
+      });
     })
     .catch(function(error) {
       console.log(error);
@@ -44,13 +46,17 @@ export default class ShotDribbble extends Component {
 
   render() {
 
-    const classes = this.props.classes;
-    const { shots } = this.state;
+    const classes   = this.props.classes;
+    const { shots, loading } = this.state;
 
     return (
       <div>
-      {shots.map(shot => (
-        <CardShot
+
+      {
+        loading
+        ?<LinearProgress color="accent" />
+        :shots.map(shot => (
+          <CardShot
           id={shot.id}
           animated={shot.animated}
           gif={shot.images.hidpi}
@@ -65,12 +71,12 @@ export default class ShotDribbble extends Component {
           likes_count={shot.likes_count}
           views_count={shot.views_count}
           comments_count={shot.comments_count}
-        />
+          />
+          )
         )
-      )
-    }
-    </div>
-    );
+      }
+      </div>
+      );
   }
 
 }

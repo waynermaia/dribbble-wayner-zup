@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/AppBar';
-import Dribbble from './components/ShotImg';
+import ServiceDribbble from './components/ServiceDribbble';
 import logo from './dribbbleLogo.svg';
 import './App.css';
 import './PlayerGif.css';
@@ -21,7 +21,7 @@ class App extends Component {
         </div>
 
         <div className="App-content">
-          <Dribbble />
+          <ServiceDribbble list="any" timeframe="now" sort="popularity"/>
         </div>
 
         <ScrollToTop showUnder={160}>
@@ -29,7 +29,7 @@ class App extends Component {
         </ScrollToTop>
 
       </div>
-      
+
     );
   }
 }
