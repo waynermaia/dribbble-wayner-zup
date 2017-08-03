@@ -5,10 +5,9 @@ import CardShot from './CardShot';
 
 import { LinearProgress } from 'material-ui/Progress';
 import Grid from 'material-ui/Grid';
-// import { withStyles, createStyleSheet } from 'material-ui/styles';
 
 const url = "https://api.dribbble.com/v1/shots?";
-const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
+const access_token = "a32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
 
 export default class ListShots extends Component {
   constructor(props) {
@@ -17,14 +16,16 @@ export default class ListShots extends Component {
     
     this.state = {
       shots:       [],
+      result:      false,
       loading:     true,
       refApi:{
         list:      "any",
         timeframe: "now",
         sort:      "popularity"
       },
-      per_page:    100,
+      per_page:    30,
       gutter:      24,
+      error:       false
     };
   }
 
@@ -38,21 +39,27 @@ export default class ListShots extends Component {
       this.setState({
         shots:   result.data,
         loading: false,
+        result:  true
       });
     })
-    .catch(function(error) {
+    .catch(err=>{
       this.setState({
-        error:   "Ocorreu algum erro.",
+        error: true,
         loading: false,
-      });
+        result:  false
+      })
     });
   }
 
   render() {
-    const { shots, loading, gutter } = this.state;
+
+    const { shots, loading, gutter, error, result } = this.state;
+
     if(loading){
       return <LinearProgress color="accent" />
-    }else if (!loading) {
+    }
+
+    else if (result) {
       return <Grid item xs> {
         <Grid container justify="center" gutter={gutter}>
         { shots.map(shot =>
@@ -79,5 +86,10 @@ export default class ListShots extends Component {
       }
       </Grid>
     }
+
+    else if(error){
+      return (<p style={{textAlign:'center'}}>Ocorreu algum erro</p>);
+    }
+
   }
 }
