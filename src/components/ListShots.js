@@ -5,7 +5,7 @@ import CardShot from './CardShot';
 
 import { LinearProgress } from 'material-ui/Progress';
 import Grid from 'material-ui/Grid';
-import { withStyles, createStyleSheet } from 'material-ui/styles';
+// import { withStyles, createStyleSheet } from 'material-ui/styles';
 
 const url = "https://api.dribbble.com/v1/shots?";
 const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
@@ -28,7 +28,7 @@ export default class ListShots extends Component {
     };
   }
 
-  componentDidMount(props) {
+  componentWillMount(props) {
 
     const { list, timeframe, sort } = this.props;
     const { per_page } = this.state;
