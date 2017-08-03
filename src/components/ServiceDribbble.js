@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import CardShot from './CardShot';
 
-import { withStyles, createStyleSheet } from 'material-ui/styles';
 import { LinearProgress } from 'material-ui/Progress';
 
 const url = "https://api.dribbble.com/v1/shots?";
@@ -30,7 +29,7 @@ export default class ServiceDribbble extends Component {
   componentDidMount(props) {
 
     const { list, timeframe, sort } = this.props;
-    const { refApi, per_page } = this.state;
+    const { per_page } = this.state;
 
     axios.get(`${url}&list=${list}&timeframe=${timeframe}&sort=${sort}&per_page=${per_page}&access_token=${access_token}`)
     .then(result => {
@@ -46,7 +45,6 @@ export default class ServiceDribbble extends Component {
 
   render() {
 
-    const classes   = this.props.classes;
     const { shots, loading } = this.state;
 
     return (

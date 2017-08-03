@@ -2,7 +2,6 @@ import React from 'react';
 import Card, {CardHeader, CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import LazyLoad from 'react-lazy-load';
 import GifPlayer from 'react-gif-player';
 import renderHTML from 'react-render-html';
