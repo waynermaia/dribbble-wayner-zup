@@ -51,9 +51,7 @@ export default class ServiceDribbble extends Component {
 
     return (
       <div>
-
-      {
-        loading
+      { loading
         ?<LinearProgress color="accent" />
         :shots.map(shot => (
           <CardShot
@@ -74,9 +72,7 @@ export default class ServiceDribbble extends Component {
           />
           )
         )
-      }
-      </div>
-      );
+      }</div>
+    )
   }
-
 }
