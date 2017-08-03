@@ -17,6 +17,10 @@
   to { transform: rotate(360deg); }
 }
 
+.gif_player {
+  width: 100%;
+}
+
 .gif_player .play_button{
   opacity: .2 !important;
 }
@@ -37,4 +41,9 @@
 .ArrowUpward:hover {
   opacity: 1;
   transition: .8s all;
+}
+
+.MuiGrid-gutter-xs-24-111 {
+    width: initial !important;
+    margin: initial !important;
 }

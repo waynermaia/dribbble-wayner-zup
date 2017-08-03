@@ -31,9 +31,11 @@ const styleSheet = createStyleSheet('ListOfShots', theme => ({
 }));
 
 function CardShot(props) {
+
   const classes = props.classes;
+
   return (
-      <Card className={classes.card}>
+    <Card className={classes.card}>
         
 	  	<CardHeader
     	avatar={
@@ -45,48 +47,48 @@ function CardShot(props) {
 	      subheader={DateFormat(props.date,"fullDate")}
 	    />
 
-        <CardMedia>
-	        <LazyLoad
-	            key={props.id}
-	            throttle={0}>
-	            {
-	            	props.animated
-	            	?<GifPlayer className={classes.backgroundCard} gif={props.gif} still={props.img} alt={`shot-${props.id}`} />
-					:<img className={classes.backgroundCard} src={props.img} alt={`shot-${props.id}`} />
-	            }
-	        </LazyLoad>
-        </CardMedia>
+      <CardMedia>
+        <LazyLoad
+            key={props.id}
+            throttle={0}>
+            {
+            	props.animated
+            	?<GifPlayer className={classes.backgroundCard} gif={props.gif} still={props.img} alt={`shot-${props.id}`} />
+				      :<img className={classes.backgroundCard} src={props.img} alt={`shot-${props.id}`} />
+            }
+        </LazyLoad>
+      </CardMedia>
 
-        <CardContent>
-          <Typography type="headline" component="h2">
-            {props.title}
-          </Typography>
-          <Typography component="small">
-            {renderHTML(props.description)}
-          </Typography>
-        </CardContent>
+      <CardContent>
+        <Typography component="h5">
+          {props.title}
+        </Typography>
+        <Typography component="small">
+          {renderHTML(props.description)}
+        </Typography>
+      </CardContent>
 
-        <Divider light />
+      <Divider light />
 
-        <CardActions disableActionSpacing>
-	        <IconButton aria-label="Likes">
-	        <Likes />
-	        </IconButton>
-	        {props.likes_count}
+      <CardActions disableActionSpacing>
+        <IconButton aria-label="Likes">
+        <Likes />
+        </IconButton>
+        {props.likes_count}
 
-	        <IconButton aria-label="Views">
-	        <Views />
-	        </IconButton>
-	        {props.views_count}
+        <IconButton aria-label="Views">
+        <Views />
+        </IconButton>
+        {props.views_count}
 
-	        <IconButton aria-label="Views">
-	        <Comment />
-	        </IconButton>
-	        {props.comments_count}
-	        <div className={classes.flexGrow} />
-        </CardActions>
+        <IconButton aria-label="Views">
+        <Comment />
+        </IconButton>
+        {props.comments_count}
+        <div className={classes.flexGrow} />
+      </CardActions>
 
-      </Card>
+    </Card>
   );
 }
 

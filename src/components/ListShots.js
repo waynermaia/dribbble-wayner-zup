@@ -4,11 +4,13 @@ import axios from 'axios';
 import CardShot from './CardShot';
 
 import { LinearProgress } from 'material-ui/Progress';
+import Grid from 'material-ui/Grid';
+import { withStyles, createStyleSheet } from 'material-ui/styles';
 
 const url = "https://api.dribbble.com/v1/shots?";
 const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
 
-export default class ServiceDribbble extends Component {
+export default class ListShots extends Component {
   constructor(props) {
 
     super(props)
@@ -21,7 +23,7 @@ export default class ServiceDribbble extends Component {
         timeframe: "now",
         sort:      "popularity"
       },
-      per_page:    10,
+      per_page:    100,
       gutter:      24,
     };
   }
@@ -39,19 +41,22 @@ export default class ServiceDribbble extends Component {
       });
     })
     .catch(function(error) {
-      console.log(error);
+      this.setState({
+        error:   "Ocorreu algum erro.",
+        loading: false,
+      });
     });
   }
 
   render() {
-
-    const { shots, loading } = this.state;
-
-    return (
-      <div>
-      { loading
-        ?<LinearProgress color="accent" />
-        :shots.map(shot => (
+    const { shots, loading, gutter } = this.state;
+    if(loading){
+      return <LinearProgress color="accent" />
+    }else if (!loading) {
+      return <Grid item xs> {
+        <Grid container justify="center" gutter={gutter}>
+        { shots.map(shot =>
+          <Grid key={shot.id} item>
           <CardShot
           id={shot.id}
           animated={shot.animated}
@@ -59,7 +64,7 @@ export default class ServiceDribbble extends Component {
           img={shot.images.normal}
           alt={shot.title}
           title={shot.title}
-          description={shot.description}
+          description={""}
           username={shot.user.username}
           avatar={shot.user.avatar_url}
           owner={shot.user.name}
@@ -68,9 +73,11 @@ export default class ServiceDribbble extends Component {
           views_count={shot.views_count}
           comments_count={shot.comments_count}
           />
-          )
-        )
-      }</div>
-    )
+          </Grid>,
+          )}
+        </Grid>
+      }
+      </Grid>
+    }
   }
 }
