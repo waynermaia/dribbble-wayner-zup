@@ -4,7 +4,8 @@ import ReactHtmlParser from 'react-html-parser';
 
 import Input from 'material-ui/Input';
 import Grid from 'material-ui/Grid';
-
+import IconButton from 'material-ui/IconButton';
+import Search from 'material-ui-icons/Search';
 const url = "https://dribbble.com/search/?q=";
 
 const ListShots = (props) => {
@@ -94,7 +95,10 @@ class SearchShot extends Component {
 
     return <Grid item xs>{
       <div>
-      <Input id="name" placeholder="Search a shot" onChange={this.handleChange} />
+        <Input id="name" style={{top:-25,left:35,color:'#ffffff'}} placeholder="Search a shot" onChange={this.handleChange} />
+        <IconButton style={{top:-15,color:'#ffffff'}} aria-label="SearchShot">
+          <Search />
+        </IconButton>
         <Grid container justify="center" gutter={24}>
           {Object.keys(shots.img).map((shot,val)=>
             <Grid item>

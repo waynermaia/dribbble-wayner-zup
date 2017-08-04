@@ -5,6 +5,7 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import GitHub from '../GitHub.svg';
 import SearchShot from './SearchShot'
+import Menu from 'material-ui-icons/Menu';
 
 export default class NavBar extends Component {
 	render(){
@@ -14,7 +15,7 @@ export default class NavBar extends Component {
 		        <Toolbar>
 
 		          <Typography type="title" color="inherit" style={{flex:1}}>
-				  	<SearchShot />
+				  	<Menu />
 		          </Typography>
 		          
 		          <IconButton color="contrast" className="right">
