@@ -44,6 +44,14 @@
 }
 
 .MuiGrid-gutter-xs-24-111 {
-    width: initial !important;
-    margin: initial !important;
+  width: initial !important;
+  margin: initial !important;
+}
+
+.MuiInput-root-59 {
+  color: rgb(255, 255, 255) !important;
+  margin-bottom: 10px !important;
+}
+.MuiInput-inkbar-61:after {
+  background-color: #ffffff !important;
 }

@@ -1,77 +1,106 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
 
-import CardShot from './CardShot';
+import Input from 'material-ui/Input';
 
-import { LinearProgress } from 'material-ui/Progress';
-import Grid from 'material-ui/Grid';
+const url = "https://dribbble.com/search/?q=";
 
-const url = "https://api.dribbble.com/v1/shots?";
-const access_token = "cb450965189dff95f12907dea450c4b155e3fda4a72ae57af138bbba773ad1bd";
+const ListShots = (props) => {
+  return  <div>
+  <img 
+  style={{cursor:"pointer"}}
+  src={props.img}
+  id={props.id}
+  />
+  </div>
+}
 
-export default class ListShots extends Component {
+class SearchShot extends Component {
   constructor(props) {
-
-    super(props)
-    
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
-      shots:       [],
-      result:      false,
-      loading:     true,
-      refApi:{
-        list:      "any",
-        timeframe: "now",
-        sort:      "popularity"
+      shots : {
+        img: [],
+        id: []
       },
-      per_page:    30,
-      gutter:      24,
-      error:       false
-    };
+      search : ""
+    }
   }
 
-  componentWillMount(props) {
-
-    const { list, timeframe, sort } = this.props;
-    const { per_page } = this.state;
-
-    axios.get("https://dribbble.com/search/?q=teste")
-    .then(result => {
-      this.setState({
-        shots:   result.data,
-        loading: false,
-        result:  true
-      });
-    })
-    .catch(err=>{
-      this.setState({
-        error: true,
-        loading: false,
-        result:  false
-      })
+  handleChange = event => {
+    this.setState({
+      search: event.target.value
+    }, function() {
+      this.performSearch();
     });
+  };
+
+  performSearch() {
+    const urlQuery = url + this.state.search;
+
+    if(this.state.search !== '') {
+      axios.get(urlQuery)
+      .then(result => {
+
+        let arrayShots = ReactHtmlParser(result.data)[1]
+        .props.children[1]
+        .props.children[5]
+        .props.children[2]
+        .props.children[0]
+        .props.children[1]
+        .props.children[0]
+        .props.children;
+
+        let arrayShotsLenght = arrayShots[0].props.children[0].props.children.length
+        
+        let shots = {
+          img: [],
+          id: []
+        }
+
+        for (let i = 0; i < arrayShotsLenght; i++){
+          shots['img'].push(arrayShots[i].props.children["0"].props.children["0"].props.children["0"].props.children["0"].props.children["0"].props.children[1].props.srcSet);
+          shots['id'].push(arrayShots["0"].props.id.slice(11, 18));
+        }
+        this.setState({
+          shots:   shots,
+          loading: false,
+          result:  true
+        });
+      })
+      .catch(err=>{
+        this.setState({
+          error: true,
+          loading: false,
+          result:  false
+        })
+      });
+    }else{
+      this.setState({
+        shots: {
+          img: [],
+          id: []
+        }
+      })
+    }
   }
 
   render() {
 
-    const { shots, loading, gutter, error, result } = this.state;
+    const {shots} = this.state;
 
-    if(loading){
-      return <LinearProgress color="accent" />
-    }
+    return (
+      <div>
+      <Input id="name" placeholder="Buscar shot" onChange={this.handleChange} />
 
-    else if (result) {
-      return <div> {
-        <p>{console.log(
-            ReactHtmlParser(shots)[1].props.children[1].props.children[5].props.children[2].props.children["0"].props.children[1].props.children["0"].props.children
-          )}</p>
-      }
+      {Object.keys(shots.img).map((shot,val)=>
+        <ListShots img={shots.img[val]} id={shots.id[val]}/>
+        )}
       </div>
-    }
-
-    else if(error){
-      return (<p style={{textAlign:'center'}}>Ocorreu algum erro</p>);
-    }
-
+      )
   }
 }
+
+export default SearchShot;
