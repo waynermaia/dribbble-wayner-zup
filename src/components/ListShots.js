@@ -7,7 +7,7 @@ import { LinearProgress } from 'material-ui/Progress';
 import Grid from 'material-ui/Grid';
 
 const url = "https://api.dribbble.com/v1/shots?";
-const access_token = "a32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
+const access_token = "32f6310e856d9e7ce2245fc5c609d6b273e6920c77489b3c3cdd018e271b3bcd";
 
 export default class ListShots extends Component {
   constructor(props) {
@@ -88,7 +88,7 @@ export default class ListShots extends Component {
     }
 
     else if(error){
-      return (<p style={{textAlign:'center'}}>Ocorreu algum erro</p>);
+      return (<p style={{textAlign:'center'}}>Something went wrong</p>);
     }
 
   }
