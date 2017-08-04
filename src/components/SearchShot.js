@@ -3,13 +3,14 @@ import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
 
 import Input from 'material-ui/Input';
+import Grid from 'material-ui/Grid';
 
 const url = "https://dribbble.com/search/?q=";
 
 const ListShots = (props) => {
   return  <div>
   <img 
-  style={{cursor:"pointer"}}
+  style={{cursor:"pointer",padding:2,borderRadius:4,margin:10}}
   src={props.img}
   id={props.id}
   />
@@ -91,15 +92,18 @@ class SearchShot extends Component {
 
     const {shots} = this.state;
 
-    return (
+    return <Grid item xs>{
       <div>
-      <Input id="name" placeholder="Search shot" onChange={this.handleChange} />
-
-      {Object.keys(shots.img).map((shot,val)=>
-        <ListShots img={shots.img[val]} id={shots.id[val]}/>
-        )}
+      <Input id="name" placeholder="Search a shot" onChange={this.handleChange} />
+        <Grid container justify="center" gutter={24}>
+          {Object.keys(shots.img).map((shot,val)=>
+            <Grid item>
+              <ListShots img={shots.img[val]} id={shots.id[val]}/>
+            </Grid>
+            )}
+          </Grid>
       </div>
-      )
+      }</Grid>
   }
 }
 
