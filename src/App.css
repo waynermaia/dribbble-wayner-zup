@@ -61,3 +61,10 @@
   width: initial !important;
   margin: initial !important;
 }
+
+.ListShots a{
+  text-decoration: blink;
+  color: #f97088;
+  font-weight: bold;
+  cursor: pointer !important;
+}
