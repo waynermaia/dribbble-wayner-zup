@@ -4,7 +4,6 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import LazyLoad from 'react-lazy-load';
 import GifPlayer from 'react-gif-player';
-import renderHTML from 'react-render-html';
 import DateFormat from 'dateformat';
 import Avatar from 'material-ui/Avatar';
 
@@ -64,7 +63,7 @@ function CardShot(props) {
           {props.title}
         </Typography>
         <Typography component="small">
-          {renderHTML(props.description)}
+          <div dangerouslySetInnerHTML={{__html: props.description}} />
         </Typography>
       </CardContent>
 
