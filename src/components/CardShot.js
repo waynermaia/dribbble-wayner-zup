@@ -26,6 +26,13 @@ const styleSheet = createStyleSheet('ListOfShots', theme => ({
   backgroundCard: {
     width: '100%',
     transition: '.4s opacity',
+  },
+  title: {
+    fontWeight: 'bold',
+  },
+  description: {
+    overflow: 'auto',
+    height: 200
   }
 }));
 
@@ -35,16 +42,19 @@ function CardShot(props) {
 
   return (
     <Card className={classes.card}>
-        
-	  	<CardHeader
-    	avatar={
-        	<Avatar aria-label="Recipe" className={classes.avatar}>
-        		<img src={props.avatar} className={classes.avatarPic} alt={props.username}/>
-			</Avatar>
-    	}
-	      title={props.owner}
-	      subheader={DateFormat(props.date,"fullDate")}
-	    />
+      {
+      props.CardHeader ?
+      <CardHeader
+      avatar={
+          <Avatar aria-label="Recipe" className={classes.avatar}>
+             <img src={props.avatar} className={classes.avatarPic} alt={props.username}/>
+          </Avatar>
+      }
+        title={props.owner}
+        subheader={DateFormat(props.date,"fullDate")}
+      />
+      :null
+      }
 
       <CardMedia>
         <LazyLoad
@@ -59,10 +69,10 @@ function CardShot(props) {
       </CardMedia>
 
       <CardContent>
-        <Typography component="h5">
+        <Typography className={classes.title}>
           {props.title}
         </Typography>
-        <Typography component="small">
+        <Typography className={classes.description} component="small">
           <div dangerouslySetInnerHTML={{__html: props.description}} />
         </Typography>
       </CardContent>
