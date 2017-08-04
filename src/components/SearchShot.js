@@ -93,7 +93,7 @@ class SearchShot extends Component {
 
     return (
       <div>
-      <Input id="name" placeholder="Buscar shot" onChange={this.handleChange} />
+      <Input id="name" placeholder="Search shot" onChange={this.handleChange} />
 
       {Object.keys(shots.img).map((shot,val)=>
         <ListShots img={shots.img[val]} id={shots.id[val]}/>
