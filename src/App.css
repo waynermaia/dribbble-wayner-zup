@@ -10,6 +10,7 @@
   color: white;
   flex: 1;
   text-align: center;
+  padding-bottom: 30px;
 }
 
 @keyframes App-logo-spin {
@@ -54,4 +55,9 @@
 }
 .MuiInput-inkbar-61:after {
   background-color: #ffffff !important;
+}
+
+.ListShots{
+  width: initial !important;
+  margin: initial !important;
 }

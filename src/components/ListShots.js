@@ -61,7 +61,7 @@ export default class ListShots extends Component {
 
     else if (result) {
       return <Grid item xs> {
-        <Grid container justify="center" gutter={gutter}>
+        <Grid container justify="center" gutter={gutter} className="ListShots">
         { shots.map(shot =>
           <Grid key={shot.id} item>
           <CardShot
@@ -88,7 +88,7 @@ export default class ListShots extends Component {
     }
 
     else if(error){
-      return (<p style={{textAlign:'center'}}>Something went wrong</p>);
+      return (<p style={{textAlign:'center'}}>Disable CORS for render list of Shots</p>);
     }
 
   }
