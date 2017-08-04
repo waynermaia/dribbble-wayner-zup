@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactHtmlParser from 'react-html-parser';
 
 import CardShot from './CardShot';
 
@@ -34,7 +35,7 @@ export default class ListShots extends Component {
     const { list, timeframe, sort } = this.props;
     const { per_page } = this.state;
 
-    axios.get(`${url}&list=${list}&timeframe=${timeframe}&sort=${sort}&per_page=${per_page}&access_token=${access_token}`)
+    axios.get("https://dribbble.com/search/?q=teste")
     .then(result => {
       this.setState({
         shots:   result.data,
@@ -60,35 +61,16 @@ export default class ListShots extends Component {
     }
 
     else if (result) {
-      return <Grid item xs> {
-        <Grid container justify="center" gutter={gutter}>
-        { shots.map(shot =>
-          <Grid key={shot.id} item>
-          <CardShot
-          id={shot.id}
-          animated={shot.animated}
-          gif={shot.images.hidpi}
-          img={shot.images.normal}
-          alt={shot.title}
-          title={shot.title}
-          description={""}
-          username={shot.user.username}
-          avatar={shot.user.avatar_url}
-          owner={shot.user.name}
-          date={shot.created_at}
-          likes_count={shot.likes_count}
-          views_count={shot.views_count}
-          comments_count={shot.comments_count}
-          />
-          </Grid>,
-          )}
-        </Grid>
+      return <div> {
+        <p>{console.log(
+            ReactHtmlParser(shots)[1].props.children[1].props.children[5].props.children[2].props.children["0"].props.children[1].props.children["0"].props.children
+          )}</p>
       }
-      </Grid>
+      </div>
     }
 
     else if(error){
-      return (<p style={{textAlign:'center'}}>Something went wrong</p>);
+      return (<p style={{textAlign:'center'}}>Ocorreu algum erro</p>);
     }
 
   }
