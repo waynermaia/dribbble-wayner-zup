@@ -17,84 +17,80 @@ const access_token = "cb450965189dff95f12907dea450c4b155e3fda4a72ae57af138bbba77
 export default class ListShots extends Component {
   constructor(props) {
 
-  super(props)
+    super(props)
 
-  this.state = {
-    shots:       [],
-    result:      false,
-    loading:     true,
-    refApi:{
-      list:      "any",
-      timeframe: "now",
-      sort:      "popularity"
-    },
-    per_page:    30,
-    gutter:      24,
-    error:       false,
-    value:       0,
-    CardHeader:  true
-  };
-}
-
-handleChange = (event, value) => {
-
-  let sort;
-
-  if(value == 0){
-    sort = "popularity";
-  }
-  else if(value == 1){
-    sort = "recent";
-  }
-  else if(value == 2){
-    sort = "views";
-  }
-  else if(value == 3){
-    sort = "comments";
+    this.state = {
+      shots:       [],
+      result:      false,
+      loading:     true,
+      sort:      "popularity",
+      per_page:    30,
+      gutter:      24,
+      error:       false,
+      value:       0,
+      CardHeader:  true
+    };
   }
 
-  this.setState({
-    value: value,
-    sort: sort,
+  handleChange = (event, value) => {
 
-    loading: true
-  });
-  this.componentWillMount()
-};
+    let sort;
 
-componentWillMount(props) {
+    if(value == 0){
+      sort = "popularity";
+    }
+    else if(value == 1){
+      sort = "recent";
+    }
+    else if(value == 2){
+      sort = "views";
+    }
+    else if(value == 3){
+      sort = "comments";
+    }
 
-  const { per_page, list, timeframe, sort } = this.state;
-
-  axios.get(`${url}&list=${list}&timeframe=${timeframe}&sort=${sort}&per_page=${per_page}&access_token=${access_token}`)
-  .then(result => {
     this.setState({
-      shots:   result.data,
-      loading: false,
-      result:  true
+      value,
+      sort,
+      loading: true
     });
-  })
-  .catch(err=>{
-    this.setState({
-      error: true,
-      loading: false,
-      result:  false
+
+    this.componentWillMount(sort)
+  };
+
+  componentWillMount(props) {
+
+    let sort = props;
+
+    const { per_page, list, timeframe } = this.state;
+
+    axios.get(`${url}&sort=${sort}&per_page=${per_page}&access_token=${access_token}`)
+    .then(result => {
+      this.setState({
+        shots:   result.data,
+        loading: false,
+        result:  true
+      });
     })
-  });
-}
-
-render() {
-
-  const { shots, loading, gutter, error, result, value } = this.state;
-
-  if(loading){
-    return <LinearProgress color="accent" />
+    .catch(err=>{
+      this.setState({
+        error: true,
+        loading: false,
+        result:  false
+      })
+    });
   }
 
-  else if (result) {
-    return <Grid item xs> {
-      <div>
+  render() {
 
+    const { shots, loading, gutter, error, result, value } = this.state;
+
+    if(loading){
+      return <LinearProgress color="accent" />
+    }
+
+    else if (result) {
+      return <Grid item xs> 
       <BottomNavigation value={value} onChange={this.handleChange}>
       <BottomNavigationButton label="Popular" icon={<FavoriteIcon />} />
       <BottomNavigationButton label="Recent" icon={<RestoreIcon />} />
@@ -126,16 +122,13 @@ render() {
         />
         </Grid>,
         )}
+      </Grid>      
       </Grid>
-
-      </div>
     }
-    </Grid>
-  }
 
-  else if(error){
-    return (<p style={{textAlign:'center'}}>Disable CORS for render list of Shots</p>);
-  }
+    else if(error){
+      return (<p style={{textAlign:'center'}}>Disable CORS for render list of Shots</p>);
+    }
 
-}
+  }
 }
