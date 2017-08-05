@@ -32,7 +32,7 @@ class App extends Component {
   state = {
     anchorEl: undefined,
     open: false,
-    selectedIndex: 1,
+    selectedIndex: 3,
   };
 
   button = undefined;
