@@ -105,9 +105,9 @@ export default class ListShots extends Component {
       { shots.map(shot =>
         <Grid key={shot.id} item>
         <CardShot
-        CardHeader={this.state.CardHeader}
-        CardContent={this.state.CardHeader}
-        CardActions={this.state.CardHeader}
+        CardHeader={this.props.CardHeader}
+        CardContent={this.props.CardContent}
+        CardActions={this.props.CardActions}
         id={shot.id}
         animated={shot.animated}
         avatar={shot.user.avatar_url}

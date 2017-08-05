@@ -58,6 +58,7 @@ function CardShot(props) {
 
       <CardMedia>
         <LazyLoad
+            height={216}
             key={props.id}
             throttle={0}>
             {
@@ -68,6 +69,7 @@ function CardShot(props) {
         </LazyLoad>
       </CardMedia>
 
+      {props.CardContent ? 
       <CardContent>
         <Typography className={classes.title}>
           {props.title}
@@ -76,8 +78,11 @@ function CardShot(props) {
           <div dangerouslySetInnerHTML={{__html: props.description}} />
         </Typography>
       </CardContent>
-
+      :null
+      }
+      
       <Divider light />
+      {props.CardActions ?
 
       <CardActions disableActionSpacing>
         <IconButton aria-label="Likes">
@@ -96,6 +101,8 @@ function CardShot(props) {
         {props.comments_count}
         <div className={classes.flexGrow} />
       </CardActions>
+      :null
+      }
 
     </Card>
   );

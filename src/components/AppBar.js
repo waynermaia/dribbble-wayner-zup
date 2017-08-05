@@ -15,14 +15,15 @@ export default class NavBar extends Component {
 		        <Toolbar>
 
 		          <Typography type="title" color="inherit" style={{flex:1}}>
-				  	<Menu />
+			          
 		          </Typography>
-		          
+
 		          <IconButton color="contrast" className="right">
 					<a href="https://github.com/waynermaia/dribbble-wayner-zup" target="blank">
 						<img src={GitHub} style={{width:30}} title="GitHub" alt="GitHub" />
 					</a>
 		          </IconButton>
+		          
 		        </Toolbar>
 
 		    </AppBar>
