@@ -10,6 +10,7 @@ import RestoreIcon from 'material-ui-icons/Restore';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import ViewsIcon from 'material-ui-icons/Visibility';
 import CommentsIcon from 'material-ui-icons/Comment';
+import Divider from 'material-ui/Divider';
 
 const url = "https://api.dribbble.com/v1/shots?";
 const access_token = "cb450965189dff95f12907dea450c4b155e3fda4a72ae57af138bbba773ad1bd";
@@ -97,6 +98,8 @@ export default class ListShots extends Component {
       <BottomNavigationButton label="Most viewed" icon={<ViewsIcon />} />
       <BottomNavigationButton label="Most commented" icon={<CommentsIcon />} />
       </BottomNavigation>
+      
+      <Divider light />
 
       <Grid container justify="center" gutter={gutter} className="ListShots">
       { shots.map(shot =>
