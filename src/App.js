@@ -85,7 +85,7 @@ class App extends Component {
               selected={index === this.state.selectedIndex}
               onClick={event => this.handleMenuItemClick(event, index)}
             >
-              {option} {this.state.selectedIndex}
+              {option}
             </MenuItem>,
           )}
         </Menu>
